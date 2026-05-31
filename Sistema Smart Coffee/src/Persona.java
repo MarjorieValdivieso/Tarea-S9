@@ -30,6 +30,7 @@ public class Persona {
             this.correo = correo;
         }else{
             System.out.println("Correo invalido");
+            this.correo=null;
         }
     }
 
@@ -39,7 +40,7 @@ public class Persona {
             this.edad = edad;
         }else{
             System.out.println("Edad invalida");
-        }
+        }   this.edad=0;
 
     }
     @Override

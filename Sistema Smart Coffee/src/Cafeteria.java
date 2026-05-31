@@ -20,6 +20,15 @@ public class Cafeteria implements CrudPedido {
 
     public void registrarCliente(Cliente cliente){
 
+        if(cliente.getCorreo()==null
+                || cliente.getEdad()==0){
+
+            System.out.println("Cliente invalido");
+
+            return;
+
+        }
+
         if(clientes.add(cliente)){
 
             System.out.println("Cliente agregado");
@@ -50,6 +59,16 @@ public class Cafeteria implements CrudPedido {
 
     public void mostrarClientes(){
 
+        if(clientes.isEmpty()){
+
+            System.out.println(
+                    "No hay clientes"
+            );
+
+            return;
+
+        }
+
         for(Cliente c : clientes){
 
             System.out.println(c);
@@ -62,18 +81,23 @@ public class Cafeteria implements CrudPedido {
 
         if(mapaPedidos.isEmpty()){
 
-            System.out.println("No hay datos disponibles");
+            System.out.println(
+                    "No hay datos disponibles"
+            );
 
             return;
 
         }
 
-        for(String correo : mapaPedidos.keySet()){
+        for(String correo :
+                mapaPedidos.keySet()){
 
             System.out.println(
-                    correo +
-                            " -> " +
-                            mapaPedidos.get(correo)
+
+                    correo
+                            + " -> "
+                            + mapaPedidos.get(correo)
+
             );
 
         }
@@ -107,7 +131,10 @@ public class Cafeteria implements CrudPedido {
 
         }
 
-        mapaPedidos.put(correo, consumo);
+        mapaPedidos.put(
+                correo,
+                consumo
+        );
 
         System.out.println(
                 "Pedido registrado"
@@ -119,7 +146,8 @@ public class Cafeteria implements CrudPedido {
     public void actualizarPedido(String correo,
                                  double nuevoConsumo) {
 
-        if(!mapaPedidos.containsKey(correo)){
+        if(!mapaPedidos.containsKey(
+                correo)){
 
             System.out.println(
                     "Pedido inexistente"
@@ -185,10 +213,10 @@ public class Cafeteria implements CrudPedido {
 
         double suma = 0;
 
-        for(double c :
+        for(double consumo :
                 mapaPedidos.values()){
 
-            suma += c;
+            suma += consumo;
 
         }
 
@@ -230,10 +258,12 @@ public class Cafeteria implements CrudPedido {
         }
 
         System.out.println(
+
                 "Mejor cliente: "
                         + correo
-                        + " | consumo: "
+                        + " | Consumo: "
                         + mayor
+
         );
 
     }
